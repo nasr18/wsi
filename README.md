@@ -1,6 +1,6 @@
-# Product Management System API
+# Web Service Integration
 
-This is a simple Express API with Typescript for managing products.
+This is a simple Express API with Typescript to integrate web service.
 
 # Installation
 
@@ -37,18 +37,6 @@ Replace `<script-name>` with the name of the script you want to execute. For exa
    ```shell
   npm run start (or) npm run start:dev
 ```
-
-# API Endpoints
-
-This API provides the following endpoints for managing products.
-
-## Product Management
-
-- `GET /api/products`: Get all products.
-- `GET /api/products/:id`: Get a specific product by ID.
-- `POST /api/products`: Create a new product.
-- `PUT /api/products/:id`: Update a product by ID.
-- `DELETE /api/products/:id`: Delete a product by ID.
 
 ## License
 This project is licensed under the MIT License. You can find the license information in the LICENSE file.
