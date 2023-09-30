@@ -1,0 +1,11 @@
+@baseUrl = http://localhost:3000/api/users
+@servicesApi = http://services.findingyou.co
+@astroApi = https://astroapi.findingyou.co
+
+GET {{servicesApi}}/gtz/geotime
+    ?loc=49.815273,6.129583
+    &dtl=1989-09-08T00:45:35
+###
+
+GET {{baseUrl}} HTTP/1.1
+###
