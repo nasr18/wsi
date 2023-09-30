@@ -36,20 +36,10 @@ const getGeoTime = ({
   lat: number;
   lng: number;
   localTime: string;
-}) => {
-  return axios.get(
+}) =>
+  axios.get(
     `${findingYouApis.services}/gtz/geotime?loc=${lat},${lng}&dtl=${localTime}`
   );
-  // .then((resp) => {
-  //   console.log("findingyouService -> getUtcDateTimes -> resp:", resp);
-  // })
-  // .catch((err) => {
-  //   console.error("findingyouService -> getUtcDateTimes -> err:", err);
-  // })
-  // .finally(() => {
-  //   console.log("finally");
-  // });
-};
 
 const getAstroCharts = ({
   lat,
@@ -70,15 +60,6 @@ const getAstroCharts = ({
   return axios.get(
     `${findingYouApis.astro}/positions?bodies=${bodies},aya=${aya},sid=${sid},loc=${lat},${lng}&dt=${utc}`
   );
-  // .then((resp) => {
-  //   console.log("findingyouService -> getAstrologicalCharts -> resp:", resp);
-  // })
-  // .catch((err) => {
-  //   console.error("findingyouService -> getAstrologicalCharts -> err:", err);
-  // })
-  // .finally(() => {
-  //   console.log("finally");
-  // });
 };
 
 export { getGeoTime, getAstroCharts };

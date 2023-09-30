@@ -8,50 +8,6 @@ import { IUserAstro, IUserGeoTime } from "./user.interface";
 export const userRouter = express.Router();
 
 userRouter.get("/", async (req: Request, res: Response) => {
-  // try {
-  // const response = await getGeoTime({
-  //   lat: users[0].lat,
-  //   lng: users[0].lng,
-  //   localTime: users[0].localTime,
-  // });
-  // console.log("getGeoTime -> resp:", response?.data);
-
-  // const userWithGeoTime: IUserGeoTime = Object.assign({}, users[0], {
-  //   utc: response.data.time.utc,
-  //   tz: response.data.time.zoneName,
-  //   offset: response.data.time.gmtOffset,
-  // });
-  // console.log("getGeoTime -> userWithGeoTime:", userWithGeoTime);
-
-  // const resp = await getAstrologicalCharts({
-  //   lat: users[0].lat,
-  //   lng: users[0].lng,
-  //   utc: response.data.time.utc,
-  // });
-  // console.log("getAstro -> resp:", resp?.data);
-
-  // const userWithGeoTimeAndAstroCharts: IUserAstro = Object.assign(
-  //   {},
-  //   userWithGeoTime,
-  //   {
-  //     geo: resp.data.geo,
-  //     ayanamshaValue: resp.data.ayanamsha.value,
-  //     chartLongitudes: resp.data.longitudes,
-  //   }
-  // );
-  // console.log(
-  //   "getGeoTime -> userWithGeoTimeAndAstroCharts:",
-  //   userWithGeoTimeAndAstroCharts
-  // );
-  // return res.status(200).json({
-  //   msg: "Data retrieved successfully!",
-  //   data: userWithGeoTimeAndAstroCharts,
-  // });
-  // } catch (err: any) {
-  //   console.error("error while fetching the products:", { err });
-  //   return res.status(500).json({ msg: err.message });
-  // }
-
   const getGeoTimeRequests = users.map((user) =>
     getGeoTime({
       lat: user.lat,
@@ -62,10 +18,6 @@ userRouter.get("/", async (req: Request, res: Response) => {
 
   try {
     const getGeoTimeResponses = await Promise.all(getGeoTimeRequests);
-    console.log(
-      "userRoutes -> getGeoTimeResponses:",
-      getGeoTimeResponses.length
-    );
 
     const getAstroChartsRequests: Promise<AxiosResponse<any, any>>[] = [];
 
@@ -92,10 +44,6 @@ userRouter.get("/", async (req: Request, res: Response) => {
     );
 
     const getAstroChartsResponses = await Promise.all(getAstroChartsRequests);
-    console.log(
-      "userRoutes -> getAstroChartsResponses:",
-      getAstroChartsResponses.length
-    );
 
     const usersWithGeoTimeAndAstroCharts: IUserAstro[] =
       getAstroChartsResponses.map((response, index) => {
